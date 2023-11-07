@@ -5,7 +5,14 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --bg-base: #fffbfa ;
+  --bg-base: #ffffff;
+  --bg-primary: #00bb9b;
+  --bg-active: #f4dd14;
+  --shadow-primary: #bad3d7;
+  --shadow-primary-dark: #28616a;
+  --bg-green: #00bb9b;
+  --w-sidebar-active-mobile: 70vw;
+  --w-sidebar-active-mobile-minus: -70vw ;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,6 +25,88 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: var(--bg-base);
+}
+
+.bg-primary {
+  background-color: var(--bg-green);
+}
+
+.bg-primary-outline {
+  background-color: var(--bg-base);
+  color: var(--bg-primary);
+}
+
+.main-section {
+  padding: 20px 60px 20px 60px;
+}
+
+.section {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: var(--bg-base);
+  box-shadow: 0px 2px 5px 0px var(--shadow-primary);
+  border-radius: 20px;
+  display: block;
+}
+
+.navbar {
+  padding: 20px;
+  background-color: var(--bg-base);
+  box-shadow: 0px 2px 5px 0px var(--shadow-primary);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-dropdown {
+  box-shadow: 0px 2px 5px 0px var(--shadow-primary);
+}
+
+.open-sidebar {
+  transition: ease-in-out 0.7s;
+}
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 20vw;
+  top: 0;
+  left: 0;
+  background: var(--bg-primary);
+  box-shadow: 0px 0px 10px 0px var(--shadow-primary-dark);
+  padding: 20px;
+  transition: ease-in-out 0.7s;
+  transform: translateX(-20vw);
+}
+.sidebar.active {
+  transform: translateX(0vw);
+}
+
+.sidebar-item.active {
+  border-color: var(--bg-active);
+  border-width: 2px;
+}
+
+@media (max-width: 768px) {
+  .main-section {
+    padding: 10px 20px 10px 20px;
+  }
+  .navbar {
+    padding: 10px;
+  }
+  .sidebar {
+    position: fixed;
+    height: 100vh;
+    width: var(--w-sidebar-active-mobile);
+    background: var(--bg-primary);
+    box-shadow: 0px 0px 10px 0px var(--shadow-primary);
+    padding: 20px;
+    transition: ease-in-out 0.7s;
+    transform: translateX(var(--w-sidebar-active-mobile-minus));
+  }
+  .sidebar.active {
+    transform: translateX(0vw);
+  }
 }
 
 /*# sourceMappingURL=globals.css.map */

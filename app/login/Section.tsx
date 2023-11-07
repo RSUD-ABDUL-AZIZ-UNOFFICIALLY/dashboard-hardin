@@ -48,6 +48,7 @@ const Section = () => {
     const navigasi = () => {
         router.push('/', { scroll: false })
     }
+
     return (
         <div className="card shadow-[#bad3d7] p-4 shadow-lg rounded-xl">
             <div className="card-body w-full grid gap-3 p-5">

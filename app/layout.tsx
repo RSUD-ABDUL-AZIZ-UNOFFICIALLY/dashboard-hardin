@@ -20,7 +20,7 @@ export default function RootLayout({
         <Providers>
           {children}
         </Providers>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,100,0,-25" />
       </body>
     </html>
   )
