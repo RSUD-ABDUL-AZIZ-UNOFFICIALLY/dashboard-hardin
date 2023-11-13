@@ -24,6 +24,32 @@
     }
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+input[type="date"] {
+    &::-webkit-calendar-picker-indicator {
+        // background-color: #00bb9b;
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+    }
+
+    &::-webkit-datetime-edit {
+        color: var(--bg-primary);
+        /* Ubah warna teks tanggal yang telah dipilih */
+    }
+
+
+    &:focus {
+        outline: none;
+        outline-width: 0.4px;
+        outline-color: var(--bg-green);
+        // background-color: #00bb9b;
+    }
+}
+
 body {
     color: rgb(var(--foreground-rgb));
     background: (var(--bg-base))
@@ -39,23 +65,24 @@ body {
 }
 
 .main-section {
-    padding: 20px 60px 20px 60px;
+    // padding: 20px 60px 20px 60px;
 }
 
 .section {
-    margin-top: 10px;
-    padding: 20px;
+    margin-top: 20px;
+    // padding: 20px;
+    width: 100%;
     background-color: var(--bg-base);
-    box-shadow: 0px 2px 5px 0px var(--shadow-primary);
-    border-radius: 20px;
-    display: block;
+    // box-shadow: 0px 2px 5px 0px var(--shadow-primary);
 }
 
 .navbar {
     padding: 20px;
     background-color: var(--bg-base);
     box-shadow: 0px 2px 5px 0px var(--shadow-primary);
-    border-radius: 20px;
+    // border-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -102,11 +129,13 @@ body {
 
 @media (max-width: 768px) {
     .main-section {
-        padding: 10px 20px 10px 20px;
+        // padding: 10px 20px 10px 20px;
     }
 
     .navbar {
         padding: 10px;
+        border-radius: 20px;
+        margin: 10px;
     }
 
     .sidebar {
