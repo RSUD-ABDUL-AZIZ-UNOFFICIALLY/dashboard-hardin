@@ -7,6 +7,7 @@
   --background-end-rgb: 255, 255, 255;
   --bg-base: #ffffff;
   --bg-primary: #00bb9b;
+  --bg-primary-hover: #14ae95;
   --bg-active: #f4dd14;
   --shadow-primary: #bad3d7;
   --shadow-primary-dark: #28616a;
@@ -44,6 +45,7 @@ input[type=date]:focus {
 body {
   color: rgb(var(--foreground-rgb));
   background: var(--bg-base);
+  min-height: 100vh;
 }
 
 .bg-primary {
@@ -74,6 +76,7 @@ body {
 
 .navbar-dropdown {
   box-shadow: 0px 2px 5px 0px var(--shadow-primary);
+  background-color: var(--bg-base);
 }
 
 .open-sidebar {
@@ -90,6 +93,7 @@ body {
   padding: 20px;
   transition: ease-in-out 0.7s;
   transform: translateX(-20vw);
+  z-index: 20;
 }
 .sidebar.active {
   transform: translateX(0vw);
@@ -98,6 +102,31 @@ body {
 .sidebar-item.active {
   border-color: var(--bg-active);
   border-width: 2px;
+}
+.sidebar-item:hover {
+  border-color: var(--bg-active);
+  background: var(--bg-primary-hover);
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: transform 0.3s ease;
+}
+.alert.active {
+  transform: translateY(0%);
+}
+.alert:not(.active) {
+  transform: translateY(-100%);
+}
+.alert .alert-body {
+  margin: 30px;
+  padding: 10px;
+  background: var(--bg-base);
+  box-shadow: 0px 0px 5px 0px var(--shadow-primary);
+  border-radius: 10px;
+  width: 20vw;
 }
 
 @media (max-width: 768px) {

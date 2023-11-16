@@ -15,6 +15,11 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
         setSidebar(e)
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem('token_api')
+        router.push(`/login`, { scroll: false })
+    }
+
     useEffect(() => {
         console.log(sidebarRef.current);
         function handleClickOutside(event: MouseEvent) {
@@ -56,7 +61,7 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
                         </DropdownTrigger>
                         <DropdownMenu aria-label="Dropdown narbar" className=''>
                             <DropdownItem onClick={() => navigation(`/`)} key="new">Profil</DropdownItem>
-                            <DropdownItem onClick={() => navigation(`/login`)} key="copy">Logout</DropdownItem>
+                            <DropdownItem onClick={() => handleLogout()} key="copy">Logout</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
@@ -73,15 +78,8 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
                     HARDIN
                 </div>
                 <div className="grid gap-5">
-                    <Button onClick={() => navigation(`/`)} className={`${active == `dashboard` && `active`} sidebar-item bg-primary shadow-md text-white`}>
-                        <div className="flex justify-between w-full p-4">
-                            Dashboard
-                            <span className="material-symbols-outlined">
-                                dashboard
-                            </span>
-                        </div>
-                    </Button>
-                    <Button onClick={() => navigation(`/rawat-jalan`)} className={`${active == `rawat-jalan` && `active`} sidebar-item bg-primary shadow-md text-white`}>
+
+                    <Button onClick={() => navigation(`/auth/rawat-jalan`)} className={`${active == `rawat-jalan` && `active`} sidebar-item bg-primary shadow-md text-white`}>
                         <div className="flex justify-between w-full p-4">
                             Poli Rawat Jalan
                             <span className="material-symbols-outlined">
@@ -89,7 +87,7 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
                             </span>
                         </div>
                     </Button>
-                    <Button onClick={() => navigation(`/rawat-inap`)} className={`${active == `rawat-inap` && `active`} sidebar-item bg-primary shadow-md text-white`}>
+                    <Button onClick={() => navigation(`/auth/rawat-inap`)} className={`${active == `rawat-inap` && `active`} sidebar-item bg-primary shadow-md text-white`}>
                         <div className="flex justify-between w-full p-4">
                             Poli Rawat inap
                             <span className="material-symbols-outlined">
