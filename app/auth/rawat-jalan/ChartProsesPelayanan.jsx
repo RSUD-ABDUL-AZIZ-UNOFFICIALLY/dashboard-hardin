@@ -161,14 +161,17 @@ const ChartProsesPelayanan = () => {
                         <div className="p-2 flex justify-start">
                             <div className="p-2 grid lg:flex lg:flex-wrap gap-2 items-center w-full">
                                 <input className='lg:p-3 p-2 w-full lg:w-auto shadow-md rounded-lg' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
-                                <div className="flex flex-wrap lg:w-auto w-full gap-2 justify-center h-full items-center text-[#00bb9b]">
-                                    <div className="p-3 shadow-md rounded-lg h-full flex justify-center items-center">
+                                <div className="flex flex-wrap lg:w-auto w-full gap-2 h-full items-center text-[#00bb9b]">
+                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
+                                        Total : {record.allrecord.total}
+                                    </div>
+                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
                                         Sudah : {record.allrecord.sudah}
                                     </div>
-                                    <div className="p-3 shadow-md rounded-lg h-full flex justify-center items-center">
+                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
                                         belum : {record.allrecord.belum}
                                     </div>
-                                    <div className="p-3 shadow-md rounded-lg h-full flex justify-center items-center">
+                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
                                         Batal : {record.allrecord.batal}
                                     </div>
                                 </div>

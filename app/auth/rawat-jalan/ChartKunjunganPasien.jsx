@@ -14,7 +14,7 @@ import { Input } from "@nextui-org/react";
 import moment from 'moment';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
-import {CircularProgress} from "@nextui-org/react";
+import { CircularProgress } from "@nextui-org/react";
 const ChartKunjunganPasien = () => {
     const base_url = process.env.base_url
     const today = moment()
