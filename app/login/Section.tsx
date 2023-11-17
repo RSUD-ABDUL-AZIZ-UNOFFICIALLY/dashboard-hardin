@@ -103,7 +103,7 @@ const Section = () => {
     return (
         <React.Fragment>
             <AlertAuth title={`Anda Sudah Login`} active={authCheck} />
-            <div className="card shadow-[#bad3d7] lg:w-[37%] p-4 shadow-lg rounded-xl">
+            <div className="card shadow-[#bad3d7] lg:w-[50%] p-4 shadow-lg rounded-xl">
                 <div className="card-body w-full grid gap-3 p-5">
                     <div className="logo grid justify-center">
                         <div className="w-full flex justify-center">

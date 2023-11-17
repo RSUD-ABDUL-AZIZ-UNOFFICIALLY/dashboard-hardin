@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/coba-context/AuthContext.tsx", "app/coba-context/page.jsx", "app/middleware/utils.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/coba-context/AuthContext.tsx", "app/coba-context/page.jsx", "app/middleware/utils.tsx", "app/auth/rawat-jalan/ChartKunjunganPasien.jsx", "app/auth/rawat-jalan/ChartProsesPelayanan.jsx"],
   "exclude": ["node_modules"]
 }

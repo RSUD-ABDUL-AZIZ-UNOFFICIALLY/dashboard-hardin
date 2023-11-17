@@ -37,7 +37,6 @@ input[type=date]::-webkit-datetime-edit {
   /* Ubah warna teks tanggal yang telah dipilih */
 }
 input[type=date]:focus {
-  outline: none;
   outline-width: 0.4px;
   outline-color: var(--bg-green);
 }
@@ -89,7 +88,6 @@ body {
   top: 0;
   left: 0;
   background: var(--bg-primary);
-  box-shadow: 0px 0px 10px 0px var(--shadow-primary-dark);
   padding: 20px;
   transition: ease-in-out 0.7s;
   transform: translateX(-20vw);
@@ -97,6 +95,7 @@ body {
 }
 .sidebar.active {
   transform: translateX(0vw);
+  box-shadow: 0px 0px 10px 0px var(--shadow-primary-dark);
 }
 
 .sidebar-item.active {
@@ -140,12 +139,12 @@ body {
     height: 100vh;
     width: var(--w-sidebar-active-mobile);
     background: var(--bg-primary);
-    box-shadow: 0px 0px 10px 0px var(--shadow-primary);
     padding: 20px;
     transition: ease-in-out 0.7s;
     transform: translateX(var(--w-sidebar-active-mobile-minus));
   }
   .sidebar.active {
+    box-shadow: 0px 0px 10px 0px var(--shadow-primary-dark);
     transform: translateX(0vw);
   }
 }
