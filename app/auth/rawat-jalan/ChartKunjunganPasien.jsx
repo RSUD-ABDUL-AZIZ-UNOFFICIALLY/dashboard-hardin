@@ -151,7 +151,7 @@ const ChartKunjunganPasien = () => {
                                 </div>
                             </div>
                             <div className="flex lg:w-auto h-full w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2">
-                                <div className="flex gap-2 lg:md:m-0 h-full pb-2">
+                                <div className="flex gap-2 lg:md:m-0 h-full md:sm:pb-2">
                                     <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">
                                         Total : {record.allrecord}
                                     </div>
