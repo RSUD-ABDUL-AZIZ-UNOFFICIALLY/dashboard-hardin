@@ -95,6 +95,14 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
                             </span>
                         </div>
                     </Button>
+                    <Button onClick={() => navigation(`#`)} className={`${active == `daftar-kamar` && `active`} sidebar-item bg-primary shadow-md text-white`}>
+                        <div className="flex justify-between w-full p-4">
+                            Daftar Kamar
+                            <span className="material-symbols-outlined">
+                                bed
+                            </span>
+                        </div>
+                    </Button>
                 </div>
             </div>
         </React.Fragment>
