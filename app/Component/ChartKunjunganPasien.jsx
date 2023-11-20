@@ -15,7 +15,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 import { CircularProgress } from "@nextui-org/react";
-const ChartKunjunganPasien = () => {
+const ChartKunjunganPasien = ({ api, title, height }) => {
     const base_url = process.env.base_url
     const today = moment()
     const [dateStart, setDateStart] = useState(today.format('YYYY-MM-DD'))
@@ -29,7 +29,7 @@ const ChartKunjunganPasien = () => {
         let listColor = []
         let listLabel = []
         try {
-            const response = await axios.get(`${base_url}/api/dashboard/reg/reports/ralan?from=${dateStart}&until=${dateEnd}`, {
+            const response = await axios.get(`${base_url}${api}?from=${dateStart}&until=${dateEnd}`, {
                 headers: {
                     'Authorization': 'Bearer ' + token_api
                 }
@@ -134,7 +134,7 @@ const ChartKunjunganPasien = () => {
         <React.Fragment>
             <div className="w-full h-full">
                 <div className="flex justify-center">
-                    <div className="text-center uppercase bg-[#00bb9b] p-3 w-full text-white shadow-lg">Kunjungan Pasien</div>
+                    <div className="text-center uppercase bg-[#00bb9b] p-3 w-full text-white shadow-lg">{title}</div>
                 </div>
 
                 {record ?
@@ -176,7 +176,7 @@ const ChartKunjunganPasien = () => {
                                         options={options}
                                         data={data}
                                         // width={400}
-                                        height={70}
+                                        height={height}
                                     />
                                 </div>
                             </div>

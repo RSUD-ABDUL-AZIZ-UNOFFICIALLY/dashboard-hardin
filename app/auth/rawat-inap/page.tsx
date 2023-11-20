@@ -16,7 +16,6 @@ export default function Home() {
       <Sidebar active={`rawat-inap`} title={`Halaman Rawat Inap`} />
       <Section />
       {/* <Navbar /> */}
-      de
     </main>
   )
 }

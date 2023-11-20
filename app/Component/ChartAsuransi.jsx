@@ -7,7 +7,7 @@ import axios from 'axios';
 import { CircularProgress } from "@nextui-org/react";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const ChartAsuransi = () => {
+const ChartAsuransi = ({ api, title }) => {
     const base_url = process.env.base_url
     const today = moment()
     const [dateStart, setDateStart] = useState(today.format('YYYY-MM-DD'))
@@ -18,7 +18,7 @@ const ChartAsuransi = () => {
     const getData = async () => {
         const token_api = localStorage.getItem('token_api')
         try {
-            const response = await axios.get(`${base_url}/api/dashboard/reg/asuransi/ralan?from=${dateStart}&until=${dateEnd}`, {
+            const response = await axios.get(`${base_url}${api}?from=${dateStart}&until=${dateEnd}`, {
                 headers: {
                     'Authorization': 'Bearer ' + token_api
                 }
@@ -80,7 +80,7 @@ const ChartAsuransi = () => {
         <React.Fragment>
             <div className="w-full h-full">
                 <div className="flex justify-center ">
-                    <div className="text-center uppercase w-full bg-[#00bb9b] p-3 text-white shadow-lg">Asuransi Rawat Jalanan</div>
+                    <div className="text-center uppercase w-full bg-[#00bb9b] p-3 text-white shadow-lg">{title}</div>
                 </div>
                 {record ?
                     <React.Fragment>
