@@ -23,8 +23,6 @@ const ChartAsuransi = () => {
                     'Authorization': 'Bearer ' + token_api
                 }
             })
-
-            console.log('data', response.data.data);
             if (response.data.data) {
                 setRecord(response.data.data)
 
@@ -37,7 +35,6 @@ const ChartAsuransi = () => {
         }
     }
 
-    console.log(record);
     useEffect(() => {
         getData()
 
@@ -83,18 +80,36 @@ const ChartAsuransi = () => {
         <React.Fragment>
             <div className="w-full h-full">
                 <div className="flex justify-center ">
-                    <div className="text-center uppercase w-full bg-[#00bb9b] p-3 text-white shadow-lg">Pelayanan Rawat Jalanan</div>
+                    <div className="text-center uppercase w-full bg-[#00bb9b] p-3 text-white shadow-lg">Asuransi Rawat Jalanan</div>
                 </div>
                 {record ?
                     <React.Fragment>
-                        <div className="p-2 lg:flex justify-start">
-                            <div className="p-2 flex gap-2 items-center w-full">
-                                <label className='text-sm' htmlFor="">Dari Tanggal</label>
-                                <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                        <div className="">
+                            <div className="p-2 grid lg:flex lg:flex-wrap md:flex md:flex-wrap gap-2 items-center w-full">
+                                <div className="lg:flex md:flex justify-start w-full gap-2">
+                                    <div className="flex gap-2 items-center w-full pb-3">
+                                        <label className='text-sm' htmlFor="">Dari Tanggal</label>
+                                        <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                                    </div>
+                                    <div className=" flex gap-2 items-center w-full">
+                                        <label className='text-sm' htmlFor="">Hingga Tanggal</label>
+                                        <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="p-2 flex gap-2 items-center w-full">
-                                <label className='text-sm' htmlFor="">Hingga Tanggal</label>
-                                <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
+                            <div className="flex lg:w-auto w-full gap-2 h-full justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll pb-3">
+                                <div className="flex lg:md:flex-wrap gap-2 m-2">
+                                    <div className="p-3 min-w-fit shadow-md rounded-lg lg:h-full flex items-center bg-[#ffee59] text-black">
+                                        Total : {record.allrecord}
+                                    </div>
+                                    {record && record.penjab.map((item) => {
+                                        return (
+                                            <p className="p-3 shadow-md bg-white rounded-lg lg:h-full min-w-fit inline items-center">
+                                                {item.penjab} : {item.totalKunjungan}
+                                            </p>
+                                        )
+                                    })}
+                                </div>
                             </div>
                         </div>
                         <div className="p-3">
@@ -103,7 +118,7 @@ const ChartAsuransi = () => {
                     </React.Fragment>
                     :
                     <React.Fragment>
-                        <div className="min-h-[30vh] w-full flex justify-center items-center">
+                        <div className="min-h-[40vh] w-full flex justify-center items-center">
                             <CircularProgress color="success" aria-label="Loading..." />
                         </div>
                     </React.Fragment>

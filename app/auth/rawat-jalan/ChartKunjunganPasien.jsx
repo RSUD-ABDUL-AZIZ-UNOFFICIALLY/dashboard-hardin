@@ -35,7 +35,6 @@ const ChartKunjunganPasien = () => {
                 }
             })
             if (response.data.data) {
-                // console.log(response.data.data.poliklinik[0]);
                 setRecord(response.data.data)
 
                 const labels = response.data.data.poliklinik.map((item) => item.poliklinik);
@@ -120,7 +119,7 @@ const ChartKunjunganPasien = () => {
         labels,
         datasets: [
             {
-                label: "",
+                label: "Kunjungan",
                 data:
                     record ? record.poliklinik.map((item) => item.totalKunjungan
                     ) : []
@@ -140,16 +139,26 @@ const ChartKunjunganPasien = () => {
 
                 {record ?
                     <React.Fragment>
-                        <div className="p-2 lg:flex justify-start">
-                            <div className="p-2 flex gap-2 items-center lg:w-1/6 w-full">
-                                <label className='text-sm' htmlFor="">Dari Tanggal</label>
-                                <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                        <div className="lg:md:flex p-2">
+                            <div className="lg:md:flex justify-start p-2 gap-2">
+                                <div className="flex gap-2 items-center w-full lg:md:mb-0 mb-2">
+                                    <label className='text-sm' htmlFor="">Dari Tanggal</label>
+                                    <input className=' p-2 shadow-md rounded-lg w-full' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                                </div>
+                                <div className="flex gap-2 items-center w-full">
+                                    <label className='text-sm' htmlFor="">Hingga Tanggal</label>
+                                    <input className=' p-2 shadow-md rounded-lg w-full' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
+                                </div>
                             </div>
-                            <div className="p-2 flex gap-2 items-center lg:w-1/6 w-full">
-                                <label className='text-sm' htmlFor="">Hingga Tanggal</label>
-                                <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
+                            <div className="flex lg:w-auto h-full w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2">
+                                <div className="flex gap-2 lg:md:m-0 h-full pb-2">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">
+                                        Total : {record.allrecord}
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div className="">
                             <div className='h-full w-full flex justify-center p-2'>
                                 {/* <canvas height={200} width={200}> */}
@@ -174,12 +183,12 @@ const ChartKunjunganPasien = () => {
                         </div>
                     </React.Fragment>
                     :
-                    <div className="min-h-[30vh] w-full flex justify-center items-center">
+                    <div className="min-h-[50vh] w-full flex justify-center items-center">
                         <CircularProgress color="success" aria-label="Loading..." />
                     </div>
                 }
-            </div>
-        </React.Fragment>
+            </div >
+        </React.Fragment >
     )
 }
 

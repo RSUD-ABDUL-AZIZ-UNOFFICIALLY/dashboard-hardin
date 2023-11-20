@@ -34,7 +34,6 @@ const ChartProsesPelayanan = () => {
                 }
             })
             if (response.data.data) {
-                // console.log(response.data.data.poliklinik[0]);
                 setRecord(response.data.data)
 
                 const labels = response.data.data.poliklinik.map((item) => item.poliklinik);
@@ -156,52 +155,53 @@ const ChartProsesPelayanan = () => {
                 </div>
                 {/* <canvas height={200} width={200}> */}
                 {record ?
-
                     <React.Fragment>
-                        <div className="p-2 flex justify-start">
-                            <div className="p-2 grid lg:flex lg:flex-wrap gap-2 items-center w-full">
-                                <input className='lg:p-3 p-2 w-full lg:w-auto shadow-md rounded-lg' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
-                                <div className="flex flex-wrap lg:w-auto w-full gap-2 h-full items-center text-[#00bb9b]">
-                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
+                        <div className="lg:md:flex ">
+                            <div className="p-2 grid lg:flex lg:md:flex-wrap gap-2 items-center">
+                                <div className="lg:md:flex justify-start">
+                                    <input className='p-2 w-full lg:w-auto shadow-md rounded-lg' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                                </div>
+                            </div>
+                            <div className="flex lg:w-auto w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2 lg:md:pb-2">
+                                <div className="flex gap-2 lg:md:m-0 m-2 h-full">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">
                                         Total : {record.allrecord.total}
                                     </div>
-                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
                                         Sudah : {record.allrecord.sudah}
                                     </div>
-                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
                                         belum : {record.allrecord.belum}
                                     </div>
-                                    <div className="p-3 shadow-md rounded-lg lg:h-full flex justify-center items-center">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
                                         Batal : {record.allrecord.batal}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="">
-                            <div className='h-full w-full flex justify-center p-2'>
-                                <div className="lg:hidden block w-full">
-                                    <Bar
-                                        // options={options2}
-                                        options={options2}
-                                        data={data}
-                                        // width={auto}
-                                        height={400}
-                                    />
-                                </div>
-                                <div className="lg:block hidden w-full">
-                                    <Bar
-                                        options={options}
-                                        data={data}
-                                    // width={400}
-                                    // height={200}
-                                    />
-                                </div>
+                        <div className='h-full w-full flex justify-center p-2'>
+                            <div className="lg:hidden block w-full">
+                                <Bar
+                                    // options={options2}
+                                    options={options2}
+                                    data={data}
+                                    // width={auto}
+                                    height={400}
+                                />
+                            </div>
+                            <div className="lg:block hidden w-full">
+                                <Bar
+                                    options={options}
+                                    data={data}
+                                // width={400}
+                                // height={200}
+                                />
                             </div>
                         </div>
                     </React.Fragment>
 
                     :
-                    <div className="min-h-[30vh] w-full flex justify-center items-center">
+                    <div className="min-h-[40vh] w-full flex justify-center items-center">
                         <CircularProgress color="success" aria-label="Loading..." />
                     </div>
 

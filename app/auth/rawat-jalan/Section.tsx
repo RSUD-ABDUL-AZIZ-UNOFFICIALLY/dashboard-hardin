@@ -14,7 +14,7 @@ const Section = () => {
                     <ChartAsuransi />
                 </div>
             </div>
-            <div className="lg:w-[100vw] bg-[#fffef2]">
+            <div className="lg:w-[100vw] h-full bg-[#fffef2]">
                 <ChartKunjunganPasien />
             </div>
         </div>
