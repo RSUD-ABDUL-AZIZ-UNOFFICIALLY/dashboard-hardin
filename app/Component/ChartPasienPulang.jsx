@@ -19,32 +19,33 @@ const ChartPasienPulang = ({ title }) => {
     const base_url = process.env.base_url
     const today = moment()
     const [dateStart, setDateStart] = useState(today.format('YYYY-MM-DD'))
+    const [dateEnd, setDateEnd] = useState(today.format('YYYY-MM-DD'))
     const [record, setRecord] = useState(null)
     const [iniLabel, setLabel] = useState([])
     const [chartColor, setChartColor] = useState([])
 
     const getData = async () => {
         const token_api = localStorage.getItem('token_api')
-        let listColor = []
-        let listLabel = []
         try {
-            const response = await axios.get(`${base_url}/api/dashboard/regpoli/daily?tgl_registrasi=${dateStart}`, {
+            const response = await axios.get(`${base_url}/api/dashboard/regranap/pulang?from=${dateStart}&until=${dateEnd}`, {
+
                 headers: {
                     'Authorization': 'Bearer ' + token_api
                 }
             })
             if (response.data.data) {
-                setRecord(response.data.data)
+                console.log(response.data);
+                setRecord(response.data)
 
-                const labels = response.data.data.poliklinik.map((item) => item.poliklinik);
+                const labels = response.data.data.map((item) => item.kd_bangsal);
                 setLabel(labels);
-                for (let i = 0; i < response.data.data.poliklinik.length; i++) {
-                    const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+                // for (let i = 0; i < response.data.data.poliklinik.length; i++) {
+                //     const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
 
-                    listColor.push(randomColor)
-                }
+                //     listColor.push(randomColor)
+                // }
 
-                setChartColor(listColor)
+                // setChartColor(listColor)
             }
 
         } catch (error) {
@@ -55,7 +56,7 @@ const ChartPasienPulang = ({ title }) => {
     useEffect(() => {
         getData()
 
-    }, [dateStart])
+    }, [dateStart, dateEnd])
 
     ChartJS.register(
         CategoryScale,
@@ -111,42 +112,68 @@ const ChartPasienPulang = ({ title }) => {
 
         }
     };
-
+    const datasetColor = [
+        '#ffd5904A',
+        '#90ffd54A',
+        '#d590ff4A',
+        '#90baff4A',
+        '#90ffd54A',
+        '#baff904A',
+        '#ba90d54A',
+        '#ff90d54A',
+        '#bad5904A',
+        // =======
+        '#ffd5904A',
+        '#90ffd54A',
+        '#d590ff4A',
+        '#90baff4A',
+        '#90ffd54A',
+        '#baff904A',
+        '#ba90d54A',
+        '#ff90d54A',
+        '#bad5904A',
+    ]
+    const datasetColorBorder = [
+        '#ffd590',
+        '#90ffd5',
+        '#d590ff',
+        '#90baff',
+        '#90ffd5',
+        '#baff90',
+        '#ba90d5',
+        '#ff90d5',
+        '#bad590',
+    ]
     const labels = iniLabel;
 
     const data = {
         labels,
         datasets: [
             {
-                label: "Sudah",
+                label: "Sudah Pulang",
                 data:
-                    record ? record.poliklinik.map((item) => item.status.Sudah
+                    record ? record.data.map((item) => item.pasien
                     ) : []
                 ,
                 backgroundColor: 'rgb(75, 192, 192)',
                 stack: 'Stack 0',
-
-            },
-            {
-                label: 'Batal',
-                data:
-                    record ? record.poliklinik.map((item) => item.status.Batal
-                    ) : []
-                ,
-                backgroundColor: 'rgb(255, 99, 132)',
-                stack: 'Stack 1',
-            },
-            {
-                label: 'Belum',
-                data:
-                    record ? record.poliklinik.map((item) => item.status.Belum
-                    ) : []
-                ,
-                backgroundColor: 'rgb(53, 162, 235)',
-                stack: 'Stack 0',
-            },
+            }
         ],
     };
+    // const data2 = {
+    //     labels,
+    //     datasets: record && record.data[0].data && record.data[0].data.map((map, index) => [
+    //         {
+    //             label: "Sudah Pulang",
+    //             data:
+    //                 record ? record.data.map((item) => item.pasien
+    //                 ) : []
+    //             ,
+    //             backgroundColor: 'rgb(75, 192, 192)',
+    //             stack: 'Stack 0',
+    //         },
+    //     ])
+    // }
     return (
         <React.Fragment>
             <div className="w-full h-full">
@@ -156,25 +183,21 @@ const ChartPasienPulang = ({ title }) => {
                 {/* <canvas height={200} width={200}> */}
                 {record ?
                     <React.Fragment>
-                        <div className="lg:md:flex ">
-                            <div className="p-2 grid lg:flex lg:md:flex-wrap gap-2 items-center">
-                                <div className="lg:md:flex justify-start">
-                                    <input className='p-2 w-full lg:w-auto shadow-md rounded-lg' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                        <div className="lg:md:flex p-2">
+                            <div className="lg:md:flex justify-start p-2 gap-2">
+                                <div className="flex gap-2 items-center w-full lg:md:mb-0 mb-2">
+                                    <label className='text-sm' htmlFor="">Dari Tanggal</label>
+                                    <input className=' p-2 shadow-md rounded-lg w-full' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                                </div>
+                                <div className="flex gap-2 items-center w-full">
+                                    <label className='text-sm' htmlFor="">Hingga Tanggal</label>
+                                    <input className=' p-2 shadow-md rounded-lg w-full' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
                                 </div>
                             </div>
-                            <div className="flex lg:w-auto w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2 lg:md:pb-2">
-                                <div className="flex gap-2 lg:md:m-0 m-2 h-full">
+                            <div className="flex lg:w-auto h-full w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2">
+                                <div className="flex gap-2 lg:md:m-0 h-full md:sm:pb-2">
                                     <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">
-                                        Total : {record.allrecord.total}
-                                    </div>
-                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
-                                        Sudah : {record.allrecord.sudah}
-                                    </div>
-                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
-                                        belum : {record.allrecord.belum}
-                                    </div>
-                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
-                                        Batal : {record.allrecord.batal}
+                                        Total : {record.record}
                                     </div>
                                 </div>
                             </div>

@@ -28,7 +28,6 @@ const ChartPasienBelumPulang = ({ title }) => {
                     'Authorization': 'Bearer ' + token_api
                 }
             })
-            console.log(response.data);
             if (response.data) {
                 setRecord(response.data)
                 const labels = response.data.data.map((item) => item.kd_bangsal);
