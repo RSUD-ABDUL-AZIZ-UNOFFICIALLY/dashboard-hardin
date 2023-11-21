@@ -2,7 +2,8 @@
 import React from 'react'
 import ChartAsuransi from '../../Component/ChartAsuransi'
 import ChartKunjunganPasien from '../../Component/ChartKunjunganPasien'
-
+import ChartPasienPulang from "../../Component/ChartPasienPulang";
+import ChartPasienBelumPulang from "../../Component/ChartPasienBelumPulang";
 const Section = () => {
     const base_url = process.env.base_url
     return (
@@ -24,16 +25,18 @@ const Section = () => {
             </div>
             <div className="lg:flex lg:gap-3">
                 <div className="lg:w-[50vw] lg:border lg:border-[#00bb9b]">
-                    <ChartKunjunganPasien
+                    {/* <ChartKunjunganPasien
                         title={'Kunjungan Pasien'}
                         api={`/api/dashboard/reg/reports/ranap`}
-                        height={''} />
+                        height={''} /> */}
+                    <ChartPasienPulang title={'Pasien Sudah Pulang'} />
                 </div>
                 <div className="lg:w-[50vw] lg:border lg:border-[#00bb9b]">
-                    <ChartKunjunganPasien
+                    {/* <ChartKunjunganPasien
                         title={'Kunjungan Pasien'}
                         api={`/api/dashboard/reg/reports/ranap`}
-                        height={''} />
+                        height={''} /> */}
+                    <ChartPasienBelumPulang title={'Pasien Belum Pulang'} />
                 </div>
             </div>
         </div>

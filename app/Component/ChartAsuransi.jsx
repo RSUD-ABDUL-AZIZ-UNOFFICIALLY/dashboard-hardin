@@ -102,9 +102,9 @@ const ChartAsuransi = ({ api, title }) => {
                                     <div className="p-3 min-w-fit shadow-md rounded-lg lg:h-full flex items-center bg-[#ffee59] text-black">
                                         Total : {record.allrecord}
                                     </div>
-                                    {record && record.penjab.map((item) => {
+                                    {record && record.penjab.map((item, index) => {
                                         return (
-                                            <p className="p-3 shadow-md bg-white rounded-lg lg:h-full min-w-fit inline items-center">
+                                            <p key={index} className="p-3 shadow-md bg-white rounded-lg lg:h-full min-w-fit inline items-center">
                                                 {item.penjab} : {item.totalKunjungan}
                                             </p>
                                         )

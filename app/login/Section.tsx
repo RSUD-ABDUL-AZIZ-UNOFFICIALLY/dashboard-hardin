@@ -40,7 +40,8 @@ const Section = () => {
         try {
             const data = await axios.post(`${base_url}/rest/login`, {
                 phone: noWa,
-                otp: kodeOtp
+                otp: kodeOtp,
+                app_name: 'dashboard'
             });
             if (data.data.error == false && data.data.permission[0] == `dashboard`) {
                 localStorage.setItem("token_api", data.data.token_api);
