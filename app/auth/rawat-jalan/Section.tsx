@@ -5,7 +5,7 @@ import ChartKunjunganPasien from '../../Component/ChartKunjunganPasien'
 import ChartAsuransi from '../../Component/ChartAsuransi'
 const Section = () => {
     return (
-        <div className='section'>
+        <div className='section mb-3'>
             <div className="lg:flex lg:gap-3">
                 <div className="lg:w-[70vw] lg:border lg:border-[#00bb9b]">
                     <ChartProsesPelayanan />
@@ -18,7 +18,7 @@ const Section = () => {
                     />
                 </div>
             </div>
-            <div className="lg:w-[100vw] h-full bg-[#fffef2]">
+            <div className="lg:w-[100vw] h-full bg-[#ffffff]">
                 <ChartKunjunganPasien
                     title={'Kunjungan Pasien'}
                     api={`/api/dashboard/reg/reports/ralan`}

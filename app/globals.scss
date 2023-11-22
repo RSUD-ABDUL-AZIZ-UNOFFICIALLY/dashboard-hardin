@@ -58,7 +58,7 @@ input[type="date"] {
 body {
     color: rgb(var(--foreground-rgb));
     background: (var(--bg-base));
-    min-height: 100vh;
+    // min-height: 100vh;
 }
 
 .bg-primary {
@@ -165,6 +165,17 @@ body {
         border-radius: 10px;
         width: 20vw;
     }
+}
+
+.footer {
+    background-color: var(--bg-primary);
+    padding: 20px;
+    color: #ffffff;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {

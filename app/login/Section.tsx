@@ -2,11 +2,13 @@
 
 import React, { useEffect, useState, useContext } from 'react'
 import { Button } from '@nextui-org/button';
-import { Avatar, Image, Input, Spinner } from "@nextui-org/react";
+import { Image, Input } from "@nextui-org/react";
 import { useRouter } from 'next/navigation'
 import axios from 'axios';
 import moment, { now } from 'moment';
 import AlertAuth from './AlertAuth';
+import AlertError from './AlertError';
+import AlertSuccess from './AlertSuccess';
 
 const Section = () => {
     const base_url = process.env.base_url
@@ -19,13 +21,35 @@ const Section = () => {
     const [noWa, setNoWa] = useState<string>(``)
     const [kodeOtp, setKodeOtp] = useState<string>(``)
     const [authCheck, setAuthCheck] = useState<boolean>(false)
-
+    const [unAuthorized, setUnAuthorized] = useState<boolean>(false)
+    const [sendOtp, setSendOtp] = useState<boolean>(false)
+    const [logError, setLogError] = useState<string>(``)
+    const [logSuccess, setLogSuccess] = useState<string>(``)
     const getOtp = async () => {
         try {
-            await axios.post(`${base_url}/rest/getOtp`, {
-                phone: noWa
+            const response = await axios.post(`${base_url}/rest/getOtp`, {
+                phone: noWa,
+                app_name: "dashboard"
             });
+            if (response.data.status == true) {
+                setLogSuccess(`OTP Berhasil Terkirim - Cek Whatsapp`)
+                setSendOtp(true)
+                setTimeout(() => {
+                    setSendOtp(false)
+                }, 5000)
+            }
+
         } catch (error) {
+            console.log(error);
+
+            const responseError: any | null = error
+            if (responseError.response.data.status == true) {
+                setUnAuthorized(true)
+                setLogError(responseError.response.data.message)
+                setTimeout(() => {
+                    setUnAuthorized(false)
+                }, 5000)
+            }
         }
         if (otpLoading == false) {
             setOtpLoading(true)
@@ -40,16 +64,16 @@ const Section = () => {
         try {
             const data = await axios.post(`${base_url}/rest/login`, {
                 phone: noWa,
-                otp: kodeOtp,
-                app_name: 'dashboard'
+                otp: kodeOtp
             });
+
             if (data.data.error == false && data.data.permission[0] == `dashboard`) {
                 localStorage.setItem("token_api", data.data.token_api);
                 setAuthCheck(true)
                 setTimeout(() => {
                     setAuthCheck(false)
                     router.push('/auth/rawat-jalan', { scroll: false })
-                }, 1500)
+                }, 2000)
             }
 
         } catch (error) {
@@ -104,6 +128,8 @@ const Section = () => {
     return (
         <React.Fragment>
             <AlertAuth title={`Anda Sudah Login`} active={authCheck} />
+            <AlertError title={logError} active={unAuthorized} />
+            <AlertSuccess title={logSuccess} active={sendOtp} />
             <div className="card shadow-[#bad3d7] w-[80%] md:w-[65%] lg:w-[50%] p-4 shadow-lg rounded-xl">
                 <div className="card-body w-full grid gap-3 p-5">
                     <div className="logo grid justify-center">

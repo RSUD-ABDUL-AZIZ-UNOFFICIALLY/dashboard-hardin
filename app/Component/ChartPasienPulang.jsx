@@ -18,11 +18,10 @@ import { CircularProgress } from "@nextui-org/react";
 const ChartPasienPulang = ({ title }) => {
     const base_url = process.env.base_url
     const today = moment()
-    const [dateStart, setDateStart] = useState(today.format('YYYY-MM-DD'))
     const [dateEnd, setDateEnd] = useState(today.format('YYYY-MM-DD'))
+    const [dateStart, setDateStart] = useState(today.subtract(1, 'days').format('YYYY-MM-DD'))
     const [record, setRecord] = useState(null)
     const [iniLabel, setLabel] = useState([])
-    const [chartColor, setChartColor] = useState([])
 
     const getData = async () => {
         const token_api = localStorage.getItem('token_api')
@@ -34,18 +33,10 @@ const ChartPasienPulang = ({ title }) => {
                 }
             })
             if (response.data.data) {
-                console.log(response.data);
                 setRecord(response.data)
 
                 const labels = response.data.data.map((item) => item.kd_bangsal);
                 setLabel(labels);
-                // for (let i = 0; i < response.data.data.poliklinik.length; i++) {
-                //     const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-
-                //     listColor.push(randomColor)
-                // }
-
-                // setChartColor(listColor)
             }
 
         } catch (error) {
@@ -70,7 +61,6 @@ const ChartPasienPulang = ({ title }) => {
     const options = {
         plugins: {
             title: {
-                // display: true,
                 text: 'Chart.js Bar Chart - Stacked',
             },
         },
@@ -89,7 +79,6 @@ const ChartPasienPulang = ({ title }) => {
     const options2 = {
         plugins: {
             title: {
-                // display: true,
                 text: 'Chart.js Bar Chart - Stacked',
             },
         },
@@ -103,7 +92,6 @@ const ChartPasienPulang = ({ title }) => {
             y: {
                 stacked: true,
             },
-            // ... konfigurasi lainnya ...
         },
         layout: {
             padding: 5,
@@ -158,6 +146,7 @@ const ChartPasienPulang = ({ title }) => {
                 backgroundColor: 'rgb(75, 192, 192)',
                 stack: 'Stack 0',
             }
+
         ],
     };
     // const data2 = {
@@ -177,7 +166,7 @@ const ChartPasienPulang = ({ title }) => {
     return (
         <React.Fragment>
             <div className="w-full h-full">
-                <div className="flex justify-center ">
+                <div className="flex justify-center">
                     <div className="text-center uppercase w-full bg-[#00bb9b] p-3 text-white shadow-lg">{title}</div>
                 </div>
                 {/* <canvas height={200} width={200}> */}
