@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -22,6 +22,15 @@ const ChartPasienPulang = ({ title }) => {
     const [dateStart, setDateStart] = useState(today.subtract(1, 'days').format('YYYY-MM-DD'))
     const [record, setRecord] = useState(null)
     const [iniLabel, setLabel] = useState([])
+
+    const scrollableRef = useRef(null);
+
+    const scrollHorizontal = (e) => {
+        if (scrollableRef.current) {
+            scrollableRef.current.scrollLeft += e;
+        }
+    };
+
 
     const getData = async () => {
         const token_api = localStorage.getItem('token_api')
@@ -100,38 +109,6 @@ const ChartPasienPulang = ({ title }) => {
 
         }
     };
-    const datasetColor = [
-        '#ffd5904A',
-        '#90ffd54A',
-        '#d590ff4A',
-        '#90baff4A',
-        '#90ffd54A',
-        '#baff904A',
-        '#ba90d54A',
-        '#ff90d54A',
-        '#bad5904A',
-        // =======
-        '#ffd5904A',
-        '#90ffd54A',
-        '#d590ff4A',
-        '#90baff4A',
-        '#90ffd54A',
-        '#baff904A',
-        '#ba90d54A',
-        '#ff90d54A',
-        '#bad5904A',
-    ]
-    const datasetColorBorder = [
-        '#ffd590',
-        '#90ffd5',
-        '#d590ff',
-        '#90baff',
-        '#90ffd5',
-        '#baff90',
-        '#ba90d5',
-        '#ff90d5',
-        '#bad590',
-    ]
     const labels = iniLabel;
 
     const data = {
@@ -149,20 +126,7 @@ const ChartPasienPulang = ({ title }) => {
 
         ],
     };
-    // const data2 = {
-    //     labels,
-    //     datasets: record && record.data[0].data && record.data[0].data.map((map, index) => [
-    //         {
-    //             label: "Sudah Pulang",
-    //             data:
-    //                 record ? record.data.map((item) => item.pasien
-    //                 ) : []
-    //             ,
-    //             backgroundColor: 'rgb(75, 192, 192)',
-    //             stack: 'Stack 0',
-    //         },
-    //     ])
-    // }
+
     return (
         <React.Fragment>
             <div className="w-full h-full">
@@ -191,24 +155,58 @@ const ChartPasienPulang = ({ title }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className='h-full w-full flex justify-center p-2'>
-                            <div className="lg:hidden block w-full">
-                                <Bar
-                                    // options={options2}
-                                    options={options2}
-                                    data={data}
-                                    // width={auto}
-                                    height={400}
-                                />
+                        <div className="lg:grid lg:grid-cols-7 h-full">
+                            <div className='lg:col-span-3 h-full w-full flex justify-center p-2'>
+                                <div className="lg:hidden block w-full">
+                                    <Bar
+                                        // options={options2}
+                                        options={options2}
+                                        data={data}
+                                        // width={auto}
+                                        height={400}
+                                    />
+                                </div>
+                                <div className="lg:block hidden w-full">
+                                    <Bar
+                                        options={options}
+                                        data={data}
+                                        // width={400}
+                                        height={220}
+                                    />
+                                </div>
                             </div>
-                            <div className="lg:block hidden w-full">
-                                <Bar
-                                    options={options}
-                                    data={data}
-                                // width={400}
-                                // height={200}
-                                />
+                            <div className='lg:col-span-4 h-full overflow-hidden '>
+                                <div className="flex scroll-smooth overflow-x-scroll" ref={scrollableRef}>
+                                    <div className="flex gap-2 h-full">
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 1</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 2</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 3</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 4</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 5</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 6</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 7</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 8</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 9</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 10</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 11</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 12</div>
+                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 13</div>
+                                    </div>
+                                </div>
+                                <div className="lg:block hidden flex justify-between mt-3 p-2">
+                                    <button onClick={() => scrollHorizontal(-500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-md'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                    <button onClick={() => scrollHorizontal(500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-md'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
                     </React.Fragment>
 
