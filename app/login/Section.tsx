@@ -67,13 +67,15 @@ const Section = () => {
                 otp: kodeOtp
             });
 
-            if (data.data.error == false && data.data.permission[0] == `dashboard`) {
+            console.log(data.data);
+            if (data.data.error == false) {
                 localStorage.setItem("token_api", data.data.token_api);
+
                 setAuthCheck(true)
                 setTimeout(() => {
                     setAuthCheck(false)
                     router.push('/auth/rawat-jalan', { scroll: false })
-                }, 2000)
+                }, 3000)
             }
 
         } catch (error) {
