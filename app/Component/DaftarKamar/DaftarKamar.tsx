@@ -33,7 +33,7 @@ const DaftarKamar = () => {
             {record && record.data.length > 0 && record.data.map((item: any, index: number) => {
                 return (
                     <React.Fragment key={index}>
-                        <div className="bg-white rounded-md shadow-md p-3 lg:md:w-96 w-full border">
+                        <div className="bg-white rounded-md shadow-md p-3 lg:w-96 md:w-[40%] w-full border">
                             <div className="flex justify-center text-center items-center">
                                 <div className="uppercase text-[#00bb9b] font-bold text-xl">
                                     {item.bangsal}
