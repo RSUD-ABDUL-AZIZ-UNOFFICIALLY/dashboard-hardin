@@ -95,7 +95,7 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
                             </span>
                         </div>
                     </Button>
-                    <Button onClick={() => navigation(`#`)} className={`${active == `daftar-kamar` && `active`} sidebar-item bg-primary shadow-md text-white`}>
+                    <Button onClick={() => navigation(`/auth/daftar-kamar`)} className={`${active == `daftar-kamar` && `active`} sidebar-item bg-primary shadow-md text-white`}>
                         <div className="flex justify-between w-full p-4">
                             Daftar Kamar
                             <span className="material-symbols-outlined">

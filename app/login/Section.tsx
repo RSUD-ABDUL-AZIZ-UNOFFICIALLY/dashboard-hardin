@@ -147,8 +147,8 @@ const Section = () => {
                             <span>Kota Singkawang</span>
                         </div>
                     </div>
-                    <Input value={noWa} onChange={(e) => setNoWa(e.target.value)} type="text" label="Nomor Whatsapp" />
-                    <Input value={kodeOtp} onChange={(e) => setKodeOtp(e.target.value)} type="text" label="Kode OTP" />
+                    <Input className='text-black' value={noWa} onChange={(e) => setNoWa(e.target.value)} type="text" label="Nomor Whatsapp" />
+                    <Input className='text-black' value={kodeOtp} onChange={(e) => setKodeOtp(e.target.value)} type="text" label="Kode OTP" />
                     <hr />
                     <div className="grid gap-4 ">
                         <Button isDisabled={otpLoading == true || !noWa ? true : false} onClick={() => getOtp()} className='w-full bg-[#4980f6] shadow-md text-white flex justify-between'>

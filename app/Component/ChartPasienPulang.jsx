@@ -14,6 +14,7 @@ import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 
 import { CircularProgress } from "@nextui-org/react";
+import Bangsal from './ChartPasienPulang/Bangsal';
 
 const ChartPasienPulang = ({ title }) => {
     const base_url = process.env.base_url
@@ -43,7 +44,6 @@ const ChartPasienPulang = ({ title }) => {
             })
             if (response.data.data) {
                 setRecord(response.data)
-
                 const labels = response.data.data.map((item) => item.kd_bangsal);
                 setLabel(labels);
             }
@@ -55,7 +55,6 @@ const ChartPasienPulang = ({ title }) => {
 
     useEffect(() => {
         getData()
-
     }, [dateStart, dateEnd])
 
     ChartJS.register(
@@ -177,29 +176,24 @@ const ChartPasienPulang = ({ title }) => {
                             </div>
                             <div className='lg:col-span-4 h-full overflow-hidden '>
                                 <div className="flex scroll-smooth overflow-x-scroll" ref={scrollableRef}>
-                                    <div className="flex gap-2 h-full">
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 1</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 2</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 3</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 4</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 5</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 6</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 7</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 8</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 9</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 10</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 11</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 12</div>
-                                        <div className="p-3 h-60 w-36 bg-lime-400">asd 13</div>
+                                    <div className="flex gap-3 h-full p-4">
+                                        {record && record.data &&
+                                            record.data.map((item, index) => {
+                                                return (
+                                                    <React.Fragment key={index}>
+                                                        <Bangsal title={item.kd_bangsal} index={item.pasien} data={item.data} />
+                                                    </React.Fragment>
+                                                )
+                                            })}
                                     </div>
                                 </div>
-                                <div className="lg:block hidden flex justify-between mt-3 p-2">
-                                    <button onClick={() => scrollHorizontal(-500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-md'>
+                                <div className="lg:flex hidden gap-2  mt-3 p-2">
+                                    <button onClick={() => scrollHorizontal(-500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-xl'>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                                         </svg>
                                     </button>
-                                    <button onClick={() => scrollHorizontal(500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-md'>
+                                    <button onClick={() => scrollHorizontal(500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-xl'>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                         </svg>
