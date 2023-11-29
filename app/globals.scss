@@ -58,7 +58,6 @@ input[type="date"] {
 body {
     color: rgb(var(--foreground-rgb));
     background: (var(--bg-base));
-    // min-height: 100vh;
 }
 
 .bg-primary {
@@ -79,6 +78,7 @@ body {
     margin-top: 20px;
     // padding: 20px;
     width: 100%;
+    min-height: 85vh;
     background-color: var(--bg-base);
     // box-shadow: 0px 2px 5px 0px var(--shadow-primary);
 }

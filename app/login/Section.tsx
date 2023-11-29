@@ -40,10 +40,17 @@ const Section = () => {
             }
 
         } catch (error) {
-            console.log(error);
 
             const responseError: any | null = error
-            if (responseError.response.data.status == true) {
+            if (responseError.message == 'Network Error') {
+                setUnAuthorized(true)
+                setLogError(responseError.message)
+                setTimeout(() => {
+                    setUnAuthorized(false)
+                }, 5000)
+            }
+
+            if (responseError.response && responseError.response.data && responseError.response.data.status == true) {
                 setUnAuthorized(true)
                 setLogError(responseError.response.data.message)
                 setTimeout(() => {
@@ -67,7 +74,6 @@ const Section = () => {
                 otp: kodeOtp
             });
 
-            console.log(data.data);
             if (data.data.error == false) {
                 localStorage.setItem("token_api", data.data.token_api);
 

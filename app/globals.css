@@ -64,6 +64,7 @@ body {
 .section {
   margin-top: 20px;
   width: 100%;
+  min-height: 85vh;
   background-color: var(--bg-base);
 }
 

@@ -5,7 +5,6 @@ import ChartKunjunganPasien from '../../Component/ChartKunjunganPasien'
 import ChartPasienPulang from "../../Component/ChartPasienPulang";
 import ChartPasienBelumPulang from "../../Component/ChartPasienBelumPulang";
 const Section = () => {
-    const base_url = process.env.base_url
     return (
         <div className='section'>
             <div className="lg:flex lg:gap-3 mb-3">

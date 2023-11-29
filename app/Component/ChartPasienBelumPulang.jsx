@@ -14,6 +14,7 @@ import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 
 import { CircularProgress } from "@nextui-org/react";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const ChartPasienBelumPulang = ({ title }) => {
     const base_url = process.env.base_url
@@ -50,7 +51,8 @@ const ChartPasienBelumPulang = ({ title }) => {
         BarElement,
         Title,
         Tooltip,
-        Legend
+        Legend,
+        ChartDataLabels
     );
 
     const options = {
@@ -59,6 +61,18 @@ const ChartPasienBelumPulang = ({ title }) => {
                 // display: true,
                 text: 'Chart.js Bar Chart - Stacked',
             },
+            datalabels: {
+                display: true,
+                color: "black",
+                align: "end",
+                padding: {
+                    // right: 2
+                },
+                anchor: 'end',
+                font: {
+                    size: 15
+                },
+            }
         },
         responsive: true,
         interaction: {
@@ -78,6 +92,18 @@ const ChartPasienBelumPulang = ({ title }) => {
                 // display: true,
                 text: 'Chart.js Bar Chart - Stacked',
             },
+            datalabels: {
+                display: true,
+                color: "black",
+                align: "end",
+                padding: {
+                    // right: 2
+                },
+                anchor: 'end',
+                font: {
+                    size: 15
+                },
+            }
         },
         responsive: true,
         interaction: {

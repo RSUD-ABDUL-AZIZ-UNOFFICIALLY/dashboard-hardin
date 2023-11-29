@@ -17,8 +17,6 @@ const DaftarKamar = () => {
             })
             if (response.data.data) {
                 setRecord(response.data)
-                console.log(response.data.data);
-
             }
         } catch (error) {
 
@@ -33,13 +31,13 @@ const DaftarKamar = () => {
             {record && record.data.length > 0 && record.data.map((item: any, index: number) => {
                 return (
                     <React.Fragment key={index}>
-                        <div className="bg-white rounded-md shadow-md p-3 lg:w-96 md:w-[40%] w-full border">
+                        <div className="bg-white rounded-2xl shadow-xl p-3 lg:w-[20%] md:w-[40%] w-full">
                             <div className="flex justify-center text-center items-center">
                                 <div className="uppercase text-[#00bb9b] font-bold text-xl">
                                     {item.bangsal}
                                 </div>
                             </div>
-                            <div className="flex flex-wrap justify-center mt-4 gap-3">
+                            <div className="flex flex-wrap justify-center mt-4 gap-3 p-3">
                                 <div className="p-3 w-[40%] rounded-md shadow-md bg-[#ffee59]">Total : {item.total}</div>
                                 <div className="p-3 w-[40%] rounded-md shadow-md bg-blue-500 text-white">Terisi : {item.isi}</div>
                                 <div className="p-3 w-[40%] rounded-md shadow-md bg-white">Booking : {item.booking}</div>

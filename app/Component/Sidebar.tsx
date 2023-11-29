@@ -21,7 +21,6 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
     }
 
     useEffect(() => {
-        // console.log(sidebarRef.current);
         function handleClickOutside(event: MouseEvent) {
             if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node | null)) {
                 handleSidebar(false);

@@ -5,7 +5,7 @@ import { Pie } from 'react-chartjs-2';
 import moment from 'moment';
 import axios from 'axios';
 import { CircularProgress } from "@nextui-org/react";
-ChartJS.register(ArcElement, Tooltip, Legend);
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const ChartAsuransi = ({ api, title }) => {
     const base_url = process.env.base_url
@@ -35,6 +35,13 @@ const ChartAsuransi = ({ api, title }) => {
         }
     }
 
+    ChartJS.register(
+        ArcElement,
+        Tooltip,
+        Legend,
+        ChartDataLabels
+    );
+
     useEffect(() => {
         getData()
 
@@ -62,10 +69,42 @@ const ChartAsuransi = ({ api, title }) => {
         '#ff90d5',
         '#bad590',
     ]
+
+    const options = {
+        plugins: {
+            title: {
+                // display: true,
+                text: 'Chart.js Bar Chart - Stacked',
+            },
+            datalabels: {
+                display: false,
+                color: "black",
+
+                // align: "end",
+                padding: {
+                    // right: 2
+                },
+                // anchor: 'end',
+                font: {
+                    size: 14
+                },
+            }
+        },
+        responsive: true,
+        interaction: {
+            mode: 'index',
+            intersect: false,
+        },
+        layout: {
+            padding: 5,
+        },
+        animation: {
+
+        }
+    };
+
     const data = {
         labels: iniLabel,
-
-
         datasets: [
             {
                 label: "",
@@ -113,7 +152,7 @@ const ChartAsuransi = ({ api, title }) => {
                             </div>
                         </div>
                         <div className="p-3">
-                            <Pie data={data} />
+                            <Pie options={options} data={data} />
                         </div>
                     </React.Fragment>
                     :

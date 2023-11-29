@@ -5,9 +5,16 @@ import { Pie } from 'react-chartjs-2';
 import moment from 'moment';
 import axios from 'axios';
 import { CircularProgress } from "@nextui-org/react";
-ChartJS.register(ArcElement, Tooltip, Legend);
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const Bangsal = ({ data, title, index }) => {
+    ChartJS.register(
+        ArcElement,
+        Tooltip,
+        Legend,
+        ChartDataLabels
+
+    );
 
     const labelChart = [
         'APS',
@@ -40,6 +47,38 @@ const Bangsal = ({ data, title, index }) => {
         data.statusBelumLengkap
     ]
 
+    const options = {
+        plugins: {
+            title: {
+                // display: true,
+                text: 'Chart.js Bar Chart - Stacked',
+            },
+            datalabels: {
+                display: false,
+                color: "black",
+                align: "end",
+                padding: {
+                    // right: 2
+                },
+                anchor: 'end',
+                font: {
+                    size: 15
+                },
+            }
+        },
+        responsive: true,
+        interaction: {
+            mode: 'index',
+            intersect: false,
+        },
+        layout: {
+            padding: 5,
+        },
+        animation: {
+
+        }
+    };
+
     const datasetColor = [
         '#ffd5904A',
         '#90ffd54A',
@@ -50,23 +89,31 @@ const Bangsal = ({ data, title, index }) => {
         '#ba90d54A',
         '#ff90d54A',
         '#bad5904A',
+        '#ffb7034A',
+        '#4361ee4A',
+        '#a5be004A',
+        '#ebf2fa4A',
+        '#f9f9f94A',
     ]
     const datasetColorBorder = [
-        '#ffd590',
-        '#90ffd5',
-        '#d590ff',
-        '#90baff',
-        '#90ffd5',
-        '#baff90',
-        '#ba90d5',
-        '#ff90d5',
-        '#bad590',
+        '#ffd5904A',
+        '#90ffd54A',
+        '#d590ff4A',
+        '#90baff4A',
+        '#90ffd54A',
+        '#baff904A',
+        '#ba90d54A',
+        '#ff90d54A',
+        '#bad5904A',
+        '#ffb7034A',
+        '#4361ee4A',
+        '#a5be004A',
+        '#ebf2fa4A',
+        '#f9f9f94A',
     ]
 
-    const options = {
+    const datas = {
         labels: labelChart,
-
-
         datasets: [
             {
                 label: "",
@@ -78,11 +125,13 @@ const Bangsal = ({ data, title, index }) => {
         ],
     };
 
+
+
     return (
         <React.Fragment>
             {/* <div className="p-3 h-60 w-36 bg-lime-400">{title}</div> */}
             <div className="lg:w-[28vw] md:w-[45vw] border p-4 rounded-lg shadow-sm bg-white">
-                <Pie data={options} />
+                <Pie options={options} data={datas} />
                 <div className="flex justify-center items-center ">
                     <div className="">
                         {title}

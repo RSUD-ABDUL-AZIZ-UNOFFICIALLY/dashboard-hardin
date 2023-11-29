@@ -14,8 +14,9 @@ import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 
 import { CircularProgress } from "@nextui-org/react";
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 const ChartProsesPelayanan = () => {
+
     const base_url = process.env.base_url
     const today = moment()
     const [dateStart, setDateStart] = useState(today.format('YYYY-MM-DD'))
@@ -63,7 +64,8 @@ const ChartProsesPelayanan = () => {
         BarElement,
         Title,
         Tooltip,
-        Legend
+        Legend,
+        ChartDataLabels
     );
 
     const options = {
@@ -72,6 +74,18 @@ const ChartProsesPelayanan = () => {
                 // display: true,
                 text: 'Chart.js Bar Chart - Stacked',
             },
+            datalabels: {
+                display: true,
+                color: "black",
+                align: "end",
+                padding: {
+                    // right: 2
+                },
+                anchor: 'end',
+                font: {
+                    size: 14
+                },
+            }
         },
         responsive: true,
         interaction: {
@@ -91,6 +105,18 @@ const ChartProsesPelayanan = () => {
                 // display: true,
                 text: 'Chart.js Bar Chart - Stacked',
             },
+            datalabels: {
+                display: true,
+                color: "black",
+                align: "end",
+                padding: {
+                    // right: 2
+                },
+                anchor: 'end',
+                font: {
+                    size: 14
+                },
+            }
         },
         responsive: true,
         interaction: {
@@ -143,7 +169,7 @@ const ChartProsesPelayanan = () => {
                     ) : []
                 ,
                 backgroundColor: 'rgb(53, 162, 235)',
-                stack: 'Stack 0',
+                stack: 'Stack 2',
             },
         ],
     };
