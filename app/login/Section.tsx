@@ -138,7 +138,7 @@ const Section = () => {
             <AlertAuth title={`Anda Sudah Login`} active={authCheck} />
             <AlertError title={logError} active={unAuthorized} />
             <AlertSuccess title={logSuccess} active={sendOtp} />
-            <div className="card shadow-[#bad3d7] w-[80%] md:w-[65%] lg:w-[50%] p-4 shadow-lg rounded-xl">
+            <div className="card bg-white shadow-[#bad3d7] w-[80%] md:w-[65%] lg:w-[50%] p-4 shadow-lg rounded-xl">
                 <div className="card-body w-full grid gap-3 p-5">
                     <div className="logo grid justify-center">
                         <div className="w-full flex justify-center">
@@ -148,9 +148,9 @@ const Section = () => {
                                 src="/img/skw.png"
                             />
                         </div>
-                        <div className="w-full text-center ">
-                            <h1 className='font-bold'>RSUD dr. Abdul Aziz</h1>
-                            <span>Kota Singkawang</span>
+                        <div className="w-full text-center m-2">
+                            <h1 className='font-bold text-black'>RSUD dr. Abdul Aziz</h1>
+                            <span className='text-black'>Kota Singkawang</span>
                         </div>
                     </div>
                     <Input className='text-black' value={noWa} onChange={(e) => setNoWa(e.target.value)} type="text" label="Nomor Whatsapp" />

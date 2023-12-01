@@ -46,6 +46,7 @@ input[type=date]:focus {
 body {
   color: rgb(var(--foreground-rgb));
   background: var(--bg-base);
+  font-family: sans-serif;
 }
 
 .bg-primary {

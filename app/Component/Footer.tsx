@@ -1,6 +1,6 @@
 import { button } from '@nextui-org/react'
 import React from 'react'
-
+import { Button } from "@nextui-org/react";
 const Footer = () => {
     const scrollToTop = () => {
         window.scrollTo({

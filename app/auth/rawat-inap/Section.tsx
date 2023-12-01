@@ -7,7 +7,7 @@ import ChartPasienBelumPulang from "../../Component/ChartPasienBelumPulang";
 const Section = () => {
     return (
         <div className='section'>
-            <div className="lg:flex lg:gap-3 mb-3">
+            <div className="lg:flex">
                 <div className="lg:w-[70vw] lg:border lg:border-[#00bb9b]">
                     <ChartKunjunganPasien
                         title={'Kunjungan Pasien'}
@@ -22,12 +22,12 @@ const Section = () => {
                     />
                 </div>
             </div>
-            <div className="w-full lg:gap-3 h-full mb-3">
+            <div className="w-full lg:gap-3 h-full">
                 <div className="lg:border h-full lg:border-[#00bb9b]">
                     <ChartPasienPulang title={'Pasien Sudah Pulang'} />
                 </div>
             </div>
-            <div className="lg:flex lg:gap-3 h-full mb-3">
+            <div className="lg:flex lg:gap-3 h-full">
                 <div className="lg:w-[50vw] lg:border w h-full lg:border-[#00bb9b]">
                     <ChartPasienBelumPulang title={'Pasien Belum Pulang'} />
                 </div>

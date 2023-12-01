@@ -125,14 +125,14 @@ const ChartAsuransi = ({ api, title }) => {
                     <React.Fragment>
                         <div className="">
                             <div className="p-2 grid lg:flex lg:flex-wrap md:flex md:flex-wrap gap-2 items-center w-full">
-                                <div className="lg:flex md:flex justify-start w-full gap-2">
-                                    <div className="flex gap-2 items-center w-full pb-3">
-                                        <label className='text-sm' htmlFor="">Dari Tanggal</label>
-                                        <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                                <div className="lg:md:grid lg:md:grid-cols-2 justify-start w-full gap-2">
+                                    <div className="gap-2 items-center w-full pb-3">
+                                        <label className='text-sm text-black' htmlFor="">Dari Tanggal</label>
+                                        <input className='lg:p-3 p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
                                     </div>
-                                    <div className=" flex gap-2 items-center w-full">
-                                        <label className='text-sm' htmlFor="">Hingga Tanggal</label>
-                                        <input className='lg:p-3 p-2 shadow-md rounded-lg w-full' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
+                                    <div className=" gap-2 items-center w-full">
+                                        <label className='text-sm text-black' htmlFor="">Hingga Tanggal</label>
+                                        <input className='lg:p-3 p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@ const ChartAsuransi = ({ api, title }) => {
                                     </div>
                                     {record && record.penjab.map((item, index) => {
                                         return (
-                                            <p key={index} className="p-3 shadow-md bg-white rounded-lg lg:h-full min-w-fit inline items-center">
+                                            <p key={index} className="p-3 shadow-md rounded-lg lg:h-full min-w-fit inline items-center bg-white text-[#00bb9b]">
                                                 {item.penjab} : {item.totalKunjungan}
                                             </p>
                                         )

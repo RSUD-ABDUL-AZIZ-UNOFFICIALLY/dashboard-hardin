@@ -93,7 +93,7 @@ const ChartPasienBelumPulang = ({ title }) => {
                 text: 'Chart.js Bar Chart - Stacked',
             },
             datalabels: {
-                display: true,
+                display: false,
                 color: "black",
                 align: "end",
                 padding: {

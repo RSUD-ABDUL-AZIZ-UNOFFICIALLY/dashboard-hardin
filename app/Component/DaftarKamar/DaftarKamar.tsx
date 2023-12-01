@@ -1,6 +1,7 @@
 'use client'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import { CircularProgress } from "@nextui-org/react";
 
 const DaftarKamar = () => {
     const [record, setRecord] = useState<any>()
@@ -27,8 +28,8 @@ const DaftarKamar = () => {
         getData()
     }, [])
     return (
-        <div className="p-3 flex justify-center gap-3 w-full flex-wrap">
-            {record && record.data.length > 0 && record.data.map((item: any, index: number) => {
+        <div className="p-3 flex justify-center gap-4 w-full flex-wrap">
+            {record && record.data.length > 0 ? record.data.map((item: any, index: number) => {
                 return (
                     <React.Fragment key={index}>
                         <div className="bg-white rounded-2xl shadow-xl p-3 lg:w-[20%] md:w-[40%] w-full">
@@ -46,7 +47,14 @@ const DaftarKamar = () => {
                         </div>
                     </React.Fragment>
                 )
-            })}
+            })
+                :
+                <React.Fragment>
+                    <div className="min-h-[70vh] w-full flex justify-center items-center">
+                        <CircularProgress color="success" aria-label="Loading..." />
+                    </div>
+                </React.Fragment>
+            }
         </div>
     )
 }

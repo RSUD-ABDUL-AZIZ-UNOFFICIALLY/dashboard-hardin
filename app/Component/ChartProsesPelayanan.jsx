@@ -106,7 +106,7 @@ const ChartProsesPelayanan = () => {
                 text: 'Chart.js Bar Chart - Stacked',
             },
             datalabels: {
-                display: true,
+                display: false,
                 color: "black",
                 align: "end",
                 padding: {
@@ -128,7 +128,6 @@ const ChartProsesPelayanan = () => {
             y: {
                 stacked: true,
             },
-            // ... konfigurasi lainnya ...
         },
         layout: {
             padding: 5,
@@ -184,7 +183,8 @@ const ChartProsesPelayanan = () => {
                     <React.Fragment>
                         <div className="lg:md:flex ">
                             <div className="p-2 grid lg:flex lg:md:flex-wrap gap-2 items-center">
-                                <div className="lg:md:flex justify-start">
+                                <div className="">
+                                    <label className='text-sm text-black' htmlFor="">Tanggal</label>
                                     <input className='p-2 w-full lg:w-auto shadow-md rounded-lg' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
                                 </div>
                             </div>
@@ -193,13 +193,13 @@ const ChartProsesPelayanan = () => {
                                     <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">
                                         Total : {record.allrecord.total}
                                     </div>
-                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-white text-[#00bb9b]">
                                         Sudah : {record.allrecord.sudah}
                                     </div>
-                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-white text-[#00bb9b]">
                                         belum : {record.allrecord.belum}
                                     </div>
-                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center">
+                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-white text-[#00bb9b]">
                                         Batal : {record.allrecord.batal}
                                     </div>
                                 </div>

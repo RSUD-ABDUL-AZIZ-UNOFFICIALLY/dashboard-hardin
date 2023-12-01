@@ -108,7 +108,7 @@ const ChartKunjunganPasien = ({ api, title, height }) => {
                 text: 'Chart.js Bar Chart - Stacked',
             },
             datalabels: {
-                display: true,
+                display: false,
                 color: "black",
                 align: "end",
                 padding: {
@@ -168,13 +168,13 @@ const ChartKunjunganPasien = ({ api, title, height }) => {
                     <React.Fragment>
                         <div className="lg:md:flex p-2">
                             <div className="lg:md:flex justify-start p-2 gap-2">
-                                <div className="flex gap-2 items-center w-full lg:md:mb-0 mb-2">
-                                    <label className='text-sm' htmlFor="">Dari Tanggal</label>
-                                    <input className=' p-2 shadow-md rounded-lg w-full' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                                <div className="gap-2 items-center w-full lg:md:mb-0 mb-2">
+                                    <label className='text-sm text-black' htmlFor="">Dari Tanggal</label>
+                                    <input className='p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
                                 </div>
-                                <div className="flex gap-2 items-center w-full">
-                                    <label className='text-sm' htmlFor="">Hingga Tanggal</label>
-                                    <input className=' p-2 shadow-md rounded-lg w-full' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
+                                <div className="gap-2 items-center w-full">
+                                    <label className='text-sm text-black' htmlFor="">Hingga Tanggal</label>
+                                    <input className=' p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
                                 </div>
                             </div>
                             <div className="flex lg:w-auto h-full w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2">

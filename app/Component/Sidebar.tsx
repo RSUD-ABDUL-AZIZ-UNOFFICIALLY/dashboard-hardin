@@ -59,8 +59,10 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
                             </Button>
                         </DropdownTrigger>
                         <DropdownMenu aria-label="Dropdown narbar" className=''>
-                            <DropdownItem onClick={() => navigation(`/`)} key="new">Profil</DropdownItem>
-                            <DropdownItem onClick={() => handleLogout()} key="copy">Logout</DropdownItem>
+                            {/* <DropdownItem onClick={() => navigation(`/`)} key="new">Profil</DropdownItem> */}
+                            <DropdownItem className='text-center' onClick={() => handleLogout()} key="copy">
+                                Logout
+                            </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>

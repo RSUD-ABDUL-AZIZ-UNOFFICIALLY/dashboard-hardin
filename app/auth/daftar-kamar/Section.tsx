@@ -2,7 +2,6 @@
 import DaftarKamar from '@/app/Component/DaftarKamar/DaftarKamar'
 import React from 'react'
 
-
 const Section = () => {
     return (
         <div className='section mb-3'>

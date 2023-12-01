@@ -1,6 +1,11 @@
 import React from 'react'
 import Section from './Section'
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+    title: 'Halaman Login',
+    description: 'Halaman',
+}
 export default function Page() {
 
     return (
