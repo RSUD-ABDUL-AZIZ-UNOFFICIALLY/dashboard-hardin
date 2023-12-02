@@ -130,7 +130,7 @@ const Bangsal = ({ data, title, index }) => {
     return (
         <React.Fragment>
             {/* <div className="p-3 h-60 w-36 bg-lime-400">{title}</div> */}
-            <div className="lg:w-[28vw] md:w-[45vw] border p-4 rounded-lg shadow-sm bg-white">
+            <div className="lg:w-[28vw] md:w-[45vw] w-[140vw] border p-4 rounded-lg shadow-sm bg-white">
                 <Pie options={options} data={datas} />
                 <div className="flex justify-center items-center ">
                     <div className="">
