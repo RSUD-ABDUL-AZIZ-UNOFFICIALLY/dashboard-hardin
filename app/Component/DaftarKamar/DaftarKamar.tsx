@@ -39,10 +39,10 @@ const DaftarKamar = () => {
                                 </div>
                             </div>
                             <div className="flex flex-wrap justify-center mt-4 gap-3 p-3">
-                                <div className="p-3 w-[40%] rounded-md shadow-md bg-[#ffee59]">Total : {item.total}</div>
-                                <div className="p-3 w-[40%] rounded-md shadow-md bg-blue-500 text-white">Terisi : {item.isi}</div>
-                                <div className="p-3 w-[40%] rounded-md shadow-md bg-white">Booking : {item.booking}</div>
-                                <div className="p-3 w-[40%] rounded-md shadow-md bg-[#00bb9b] text-white">Kosong : {item.kosong}</div>
+                                <div className="p-3 w-[40%] text-center rounded-md shadow-md bg-[#ffee59] text-black">Total : {item.total}</div>
+                                <div className="p-3 w-[40%] text-center rounded-md shadow-md bg-blue-500 text-white">Terisi : {item.isi}</div>
+                                <div className="p-3 w-[40%] text-center rounded-md shadow-md bg-white text-black">Booking : {item.booking}</div>
+                                <div className="p-3 w-[40%] text-center rounded-md shadow-md bg-[#00bb9b] text-white">Kosong : {item.kosong}</div>
                             </div>
                         </div>
                     </React.Fragment>
