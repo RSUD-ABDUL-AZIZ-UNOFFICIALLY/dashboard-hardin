@@ -53,6 +53,7 @@ body {
 
 .main-section {
   min-height: 100vh;
+  margin-top: 15vh;
 }
 
 .section {
@@ -71,6 +72,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
 }
 
 .navbar-dropdown {
@@ -140,10 +145,8 @@ body {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .navbar {
-    padding: 10px;
-    border-radius: 20px;
-    margin: 10px;
+  .main-section {
+    margin-top: 10vh;
   }
   .sidebar {
     position: fixed;
@@ -180,10 +183,11 @@ body {
   }
 }
 @media (max-width: 768px) {
+  .main-section {
+    margin-top: 12vh;
+  }
   .navbar {
-    padding: 10px;
-    border-radius: 20px;
-    margin: 10px;
+    top: 0;
   }
   .sidebar {
     position: fixed;

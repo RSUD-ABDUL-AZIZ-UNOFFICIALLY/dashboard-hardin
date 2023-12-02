@@ -73,6 +73,7 @@ body {
 .main-section {
     // padding: 20px 60px 20px 60px;
     min-height: 100vh;
+    margin-top: 15vh;
 }
 
 .section {
@@ -94,6 +95,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
 
 }
 
@@ -182,12 +187,13 @@ body {
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .main-section {
         // padding: 10px 20px 10px 20px;
+        margin-top: 10vh;
     }
 
     .navbar {
-        padding: 10px;
-        border-radius: 20px;
-        margin: 10px;
+        // padding: 10px;
+        // border-radius: 20px;
+        // margin: 10px;
     }
 
     .sidebar {
@@ -234,12 +240,14 @@ body {
 @media (max-width: 768px) {
     .main-section {
         // padding: 10px 20px 10px 20px;
+        margin-top: 12vh;
     }
 
     .navbar {
-        padding: 10px;
-        border-radius: 20px;
-        margin: 10px;
+        top: 0;
+        // padding: 10px;
+        // border-radius: 20px;
+        // margin: 10px;
     }
 
     .sidebar {
