@@ -185,7 +185,7 @@ const ChartProsesPelayanan = () => {
                             <div className="p-2 grid lg:flex lg:md:flex-wrap gap-2 items-center">
                                 <div className="">
                                     <label className='text-sm text-black' htmlFor="">Tanggal</label>
-                                    <input className='p-2 w-full lg:w-auto shadow-md rounded-lg' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
+                                    <input className='p-2 w-full lg:w-auto shadow-md rounded-lg bg-white text-[#00bb9b]' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
                                 </div>
                             </div>
                             <div className="flex lg:w-auto w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2 lg:md:pb-2">
