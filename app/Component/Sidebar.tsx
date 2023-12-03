@@ -72,7 +72,7 @@ const Sidebar = ({ active, title }: { active: string, title: string }) => {
                             <div className="flex justify-between w-full p-4">
                                 Poli Rawat inap
                                 <span className="material-symbols-outlined">
-                                    bed
+                                    hotel
                                 </span>
                             </div>
                         </Button>
