@@ -11,7 +11,7 @@ const Footer = () => {
 
     const buttonScroll = () => {
         return (
-            <div className="fixed z-20 bottom-[50px] right-[5px]">
+            <div className="fixed z-20 bottom-[20px] right-[5px]">
                 <button onClick={scrollToTop} className="p-3 duration-75 active:scale-95 hover:active:bg-slate-50 rounded-full m-3 shadow-lg bg-white text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
@@ -27,6 +27,10 @@ const Footer = () => {
             <div className="uppercase font-bold text-sm">Dashboard Hardin</div>
             <div className="text-sm">Copyright &copy; RSUD dr. Abdul Aziz</div>
             <div className="text-xs">2023</div>
+            <div className="flex justify-center p-1 gap-2 items-center mt-2">
+                <img className='h-10' src="/kemenkes2.png" alt="" />
+                <img className='h-10' src="/germas.png" alt="" />
+            </div>
         </div>
     )
 }

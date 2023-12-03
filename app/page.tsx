@@ -8,7 +8,7 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/login')
+    router.push('/auth/rawat-jalan')
   })
   return (
     <main className="main-section flex justify-center items-center h-[100vh] text-5xl font-bold uppercase">

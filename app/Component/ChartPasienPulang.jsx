@@ -214,7 +214,7 @@ const ChartPasienPulang = ({ title }) => {
                                             })}
                                     </div>
                                 </div>
-                                <div className="lg:flex hidden gap-2  mt-3 p-2">
+                                <div className="flex gap-2  mt-3 p-2">
                                     <button onClick={() => scrollHorizontal(-500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-xl'>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />

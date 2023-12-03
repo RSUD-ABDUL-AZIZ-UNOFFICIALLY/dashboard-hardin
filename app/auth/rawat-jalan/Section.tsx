@@ -6,11 +6,11 @@ import ChartAsuransi from '../../Component/ChartAsuransi'
 const Section = () => {
     return (
         <div className='section mb-3'>
-            <div className="lg:flex mb-3">
-                <div className="lg:w-[70vw] lg:border lg:border-[#00bb9b]">
+            <div className="lg:flex gap-3">
+                <div className="lg:w-[70%] bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
                     <ChartProsesPelayanan />
                 </div>
-                <div className="lg:w-[30vw] lg:border lg:border-[#00bb9b]">
+                <div className="lg:w-[30%] bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
                     <ChartAsuransi
                         title={'Asuransi Rawat'}
                         api={`/api/dashboard/reg/asuransi/ralan`}
@@ -18,7 +18,7 @@ const Section = () => {
                     />
                 </div>
             </div>
-            <div className="lg:w-[100vw] h-full bg-[#ffffff] ">
+            <div className="lg:w-[100%] h-full bg-[#ffffff] rounded-xl overflow-hidden shadow-lg">
                 <ChartKunjunganPasien
                     title={'Kunjungan Pasien'}
                     api={`/api/dashboard/reg/reports/ralan`}
