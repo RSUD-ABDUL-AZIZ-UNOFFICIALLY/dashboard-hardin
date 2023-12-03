@@ -149,7 +149,7 @@ const ChartPasienBelumPulang = ({ title }) => {
                 </div>
                 {record ?
                     <React.Fragment>
-                        <div className="lg:md:flex p-2 pt-0">
+                        <div className="lg:md:flex p-2 pt-0 animasi-topToBottom">
                             <div className="flex lg:w-auto w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2 lg:md:pb-2">
                                 <div className="flex gap-2 lg:md:m-0 m-2 h-full">
                                     <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">

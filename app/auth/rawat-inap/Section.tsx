@@ -1,14 +1,20 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ChartAsuransi from '../../Component/ChartAsuransi'
 import ChartKunjunganPasien from '../../Component/ChartKunjunganPasien'
 import ChartPasienPulang from "../../Component/ChartPasienPulang";
 import ChartPasienBelumPulang from "../../Component/ChartPasienBelumPulang";
+
 const Section = () => {
+    const sectionRef = useRef<any | null>(null)
+
+    useEffect(() => {
+        console.log('ref', sectionRef);
+    }, [])
     return (
         <div className='section'>
             <div className="lg:flex gap-3">
-                <div className="lg:w-[70%] bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
+                <div ref={sectionRef} className="lg:w-[70%] bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
                     <ChartKunjunganPasien
                         title={'Kunjungan Pasien'}
                         api={`/api/dashboard/reg/reports/ranap`}

@@ -162,7 +162,7 @@ const ChartPasienPulang = ({ title }) => {
                 {/* <canvas height={200} width={200}> */}
                 {record ?
                     <React.Fragment>
-                        <div className="lg:md:flex p-2">
+                        <div className="lg:md:flex animasi-topToBottom p-2">
                             <div className="lg:md:flex justify-start p-2 gap-2">
                                 <div className="gap-2 items-center w-full lg:md:mb-0 mb-2">
                                     <label className='text-sm text-black' htmlFor="">Dari Tanggal</label>

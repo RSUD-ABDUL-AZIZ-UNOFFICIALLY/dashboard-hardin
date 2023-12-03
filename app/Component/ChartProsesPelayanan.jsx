@@ -181,7 +181,7 @@ const ChartProsesPelayanan = () => {
                 {/* <canvas height={200} width={200}> */}
                 {record ?
                     <React.Fragment>
-                        <div className="lg:md:flex ">
+                        <div className="lg:md:flex animasi-topToBottom">
                             <div className="p-2 grid lg:flex lg:md:flex-wrap gap-2 items-center">
                                 <div className="">
                                     <label className='text-sm text-black' htmlFor="">Tanggal</label>

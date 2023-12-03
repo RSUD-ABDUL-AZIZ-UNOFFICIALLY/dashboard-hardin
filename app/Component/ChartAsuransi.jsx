@@ -123,7 +123,7 @@ const ChartAsuransi = ({ api, title }) => {
                 </div>
                 {record ?
                     <React.Fragment>
-                        <div className="">
+                        <div className="animasi-topToBottom">
                             <div className="p-2 grid lg:flex lg:flex-wrap md:flex md:flex-wrap gap-2 items-center w-full">
                                 <div className="lg:md:grid lg:md:grid-cols-2 justify-start w-full gap-2">
                                     <div className="gap-2 items-center w-full pb-3">

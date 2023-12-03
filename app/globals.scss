@@ -97,6 +97,7 @@ body {
     justify-content: space-between;
     align-items: center;
     // position: fixed;
+    z-index: 10;
     width: 95vw;
     // top: 0;
     // left: 0;
@@ -184,6 +185,48 @@ body {
     align-items: center;
     text-align: center;
     height: 100%;
+}
+
+.animasi-popup {
+    animation: scaleUp 1s;
+
+    @keyframes scaleUp {
+        0% {
+            transform: scale(0);
+            transition: ease-in-out;
+            opacity: 0;
+        }
+
+        50% {
+            transform: scale(1.03);
+            transition: ease-in-out;
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(1);
+            transition: ease-in-out;
+            opacity: 1;
+        }
+    }
+}
+
+.animasi-topToBottom {
+    animation: toptoBottom 1s;
+
+    @keyframes toptoBottom {
+        0% {
+            transform: translateY(-20%);
+            transition: ease-in-out;
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0%);
+            transition: ease-in-out;
+            opacity: 1;
+        }
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
