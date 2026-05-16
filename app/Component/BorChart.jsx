@@ -78,14 +78,9 @@ export default function BorChart({
   // Fetch data setiap kali activePeriode atau activeBangsal berubah
   useEffect(() => {
     fetchData();
-  }, [inputPeriode, inputBangsal, fetchData]);
-
-  // Handler saat form disubmit
-  const handleFilterSubmit = (e) => {
-    e.preventDefault();
-    setActivePeriode(inputPeriode);
-    setActiveBangsal(inputBangsal);
-  };
+    // setActivePeriode(inputPeriode);
+    // setActiveBangsal(inputBangsal);
+  }, [activePeriode, activeBangsal]);
 
   // Konfigurasi Data Chart
   const chartData = {
@@ -159,7 +154,7 @@ export default function BorChart({
       <div className="w-full border border-gray-200 bg-white p-6 shadow-sm">
         {/* Bagian Form Filter */}
         <form
-          onSubmit={handleFilterSubmit}
+          // onSubmit={handleFilterSubmit}
           className="mb-6 flex flex-col items-end gap-4 rounded-lg bg-gray-50 p-4 sm:flex-row sm:items-end border border-gray-100"
         >
           <div className="w-full sm:w-auto flex-1">
@@ -173,7 +168,10 @@ export default function BorChart({
               type="month"
               id="periode"
               value={`${inputPeriode}`}
-              onChange={(e) => setInputPeriode(e.target.value)}
+              onChange={(e) => {
+                setInputPeriode(e.target.value);
+                setActivePeriode(e.target.value);
+              }}
               className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
@@ -184,19 +182,11 @@ export default function BorChart({
               nmBangsal="Nama Bangsal"
               defaultValue={inputBangsal}
               onSelectChange={(value, name) => {
-                setInputBangsal(value);
+                setActiveBangsal(value);
                 setactiveNMBangsal(name);
               }}
             />
           </div>
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400 sm:w-auto"
-          >
-            {isLoading ? "Memuat..." : "Tampilkan Data"}
-          </button>
         </form>
 
         {/* Tampilan Error */}
