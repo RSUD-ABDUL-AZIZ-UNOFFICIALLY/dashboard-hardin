@@ -6,4 +6,7 @@ module.exports = {
     env: {
         base_url: process.env.base_url,
     },
+    nextConfig: {
+        basePath: '/hardin'
+    }
 }
