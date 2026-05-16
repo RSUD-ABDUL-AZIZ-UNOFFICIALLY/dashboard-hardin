@@ -4,6 +4,7 @@ import ChartAsuransi from '../../Component/ChartAsuransi'
 import ChartKunjunganPasien from '../../Component/ChartKunjunganPasien'
 import ChartPasienPulang from "../../Component/ChartPasienPulang";
 import ChartPasienBelumPulang from "../../Component/ChartPasienBelumPulang";
+import BorChart from "../../Component/BorChart";
 
 const Section = () => {
     const sectionRef = useRef<any | null>(null)
@@ -16,7 +17,7 @@ const Section = () => {
             <div className="lg:flex gap-3">
                 <div ref={sectionRef} className="lg:w-[70%] bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
                     <ChartKunjunganPasien
-                        title={'Kunjungan Pasien'}
+                        title={'Pasen masuk Rawat Inap'}
                         api={`/api/dashboard/reg/reports/ranap`}
                         height={''} />
                 </div>
@@ -36,6 +37,13 @@ const Section = () => {
             <div className="lg:flex lg:gap-3 h-full">
                 <div className="lg:w-[50%] bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
                     <ChartPasienBelumPulang title={'Pasien Belum Pulang'} />
+                </div>
+            </div>
+            <div className="lg:flex gap-2">
+                <div className="bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
+                    <BorChart
+                        title={'Indikator Pelayanan Rumah Sakit'}
+                    />
                 </div>
             </div>
         </div>

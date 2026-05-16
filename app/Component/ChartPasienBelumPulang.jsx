@@ -128,18 +128,15 @@ const ChartPasienBelumPulang = ({ title }) => {
     const labels = iniLabel;
 
     const data = {
-        labels,
-        datasets: [
-            {
-                label: "Belum Pulang",
-                data:
-                    record ? record.data.map((item) => item.belumPulang) : []
-                ,
-                backgroundColor: 'rgb(75, 192, 192)',
-                stack: 'Stack 0',
-
-            },
-        ],
+      labels,
+      datasets: [
+        {
+          label: "Jumlah Pasien Belum Pulang",
+          data: record ? record.data.map((item) => item.belumPulang) : [],
+          backgroundColor: "rgb(75, 192, 192)",
+          stack: "Stack 0",
+        },
+      ],
     };
     return (
         <React.Fragment>

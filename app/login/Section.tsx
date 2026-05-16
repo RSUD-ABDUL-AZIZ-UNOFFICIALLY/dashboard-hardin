@@ -84,8 +84,12 @@ const Section = () => {
                 }, 3000)
             }
 
-        } catch (error) {
-
+        } catch (err: any) {
+            setUnAuthorized(true)
+            setLogError(err.response?.data?.message)
+            setTimeout(() => {
+                setUnAuthorized(false)
+            }, 5000)
         }
     }
 

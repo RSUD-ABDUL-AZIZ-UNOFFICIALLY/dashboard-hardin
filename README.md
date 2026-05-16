@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dashboard Hardin
 
-## Getting Started
+## Overview
+Dashboard Hardin is a frontend project built using the Next.js framework. It leverages TypeScript for type safety and Tailwind CSS for styling. The project is structured to support modular development and scalability, making it suitable for complex applications.
 
-First, run the development server:
+## Features
+- **Next.js Framework**: Utilizes the power of Next.js for server-side rendering and static site generation.
+- **TypeScript**: Ensures type safety and better developer experience.
+- **Tailwind CSS**: Provides utility-first CSS for rapid UI development.
+- **Modular Structure**: Organized codebase with reusable components and clear separation of concerns.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Project Structure
+The project is organized as follows:
+
+```
+app/
+  globals.css       # Global CSS styles
+  globals.scss      # Global SCSS styles
+  layout.tsx        # Main layout component
+  page.tsx          # Main page component
+  providers.tsx     # Context providers
+  auth/             # Authentication-related pages and components
+  Component/        # Reusable components
+  middleware/       # Middleware for authentication and other logic
+public/
+  img/              # Public assets (images, etc.)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
+### Prerequisites
+- Node.js (v16 or later)
+- npm or yarn
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/RSUD-ABDUL-AZIZ-UNOFFICIALLY/dashboard-hardin.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd dashboard-hardin
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Running the Development Server
+Start the development server with the following command:
+```bash
+npm run dev
+```
+The application will be available at `http://localhost:3000`.
 
-## Learn More
+### Building for Production
+To build the project for production, run:
+```bash
+npm run build
+```
+The optimized output will be available in the `.next` directory.
 
-To learn more about Next.js, take a look at the following resources:
+### Linting and Formatting
+Ensure code quality by running:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contribution
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes and open a pull request.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+This project is licensed under the MIT License.
