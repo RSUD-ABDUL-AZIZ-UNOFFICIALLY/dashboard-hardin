@@ -38,7 +38,7 @@ const ChartPasienBelumPulang = ({ title }) => {
         const labels = response.data.data.map((item) => item.kd_bangsal);
         let belumPulang = 0;
         for (let i = 0; i < response.data.data.length; i++) {
-          belumPulang += response.data.data[i].pasien;
+          belumPulang += response.data.data[i].belumPulang;
         }
         setTotal(belumPulang);
         setLabel(labels);
