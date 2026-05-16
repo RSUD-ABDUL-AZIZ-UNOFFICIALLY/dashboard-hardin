@@ -35,12 +35,12 @@ const Section = () => {
                 </div>
             </div>
             <div className="lg:flex lg:gap-3 h-full">
-                <div className="lg:w-[50%] bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
+                <div className="lg:w-[100%] h-full bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
                     <ChartPasienBelumPulang title={'Pasien Belum Pulang'} />
                 </div>
             </div>
-            <div className="lg:flex gap-2">
-                <div className="bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
+            <div className="lg:flex gap-1">
+                <div className="lg:w-[100%] h-full bg-[#ffffff] rounded-xl overflow-hidden shadow-lg mb-3">
                     <BorChart
                         title={'Indikator Pelayanan Rumah Sakit'}
                     />
