@@ -24,6 +24,7 @@ const ChartPasienPulang = ({ title }) => {
     const [dateStart, setDateStart] = useState(today.subtract(1, 'days').format('YYYY-MM-DD'))
     const [record, setRecord] = useState(null)
     const [iniLabel, setLabel] = useState([])
+    const [total, setTotal] = useState(0);
 
     const scrollableRef = useRef(null);
 
@@ -47,6 +48,11 @@ const ChartPasienPulang = ({ title }) => {
                 setRecord(response.data)
                 const labels = response.data.data.map((item) => item.kd_bangsal);
                 setLabel(labels);
+                let pulang = 0;
+                for (let i = 0; i < response.data.data.length; i++) {
+                  pulang += response.data.data[i].pasien;
+                }
+                setTotal(pulang);
             }
 
         } catch (error) {
@@ -154,93 +160,141 @@ const ChartPasienPulang = ({ title }) => {
     };
 
     return (
-        <React.Fragment>
-            <div className="w-full h-full">
-                <div className="flex justify-center">
-                    <div className="text-center uppercase w-full bg-[#00bb9b] p-3 text-white shadow-lg">{title}</div>
+      <React.Fragment>
+        <div className="w-full h-full">
+          <div className="flex justify-center">
+            <div className="text-center uppercase w-full bg-[#00bb9b] p-3 text-white shadow-lg">
+              {title}
+            </div>
+          </div>
+          {/* <canvas height={200} width={200}> */}
+          {record ? (
+            <React.Fragment>
+              <div className="lg:md:flex animasi-topToBottom p-2">
+                <div className="lg:md:flex justify-start p-2 gap-2">
+                  <div className="gap-2 items-center w-full lg:md:mb-0 mb-2">
+                    <label className="text-sm text-black" htmlFor="">
+                      Dari Tanggal
+                    </label>
+                    <input
+                      className=" p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]"
+                      value={dateStart}
+                      onChange={(e) => setDateStart(e.target.value)}
+                      type="date"
+                    />
+                  </div>
+                  <div className="gap-2 items-center w-full">
+                    <label className="text-sm text-black" htmlFor="">
+                      Hingga Tanggal
+                    </label>
+                    <input
+                      className=" p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]"
+                      value={dateEnd}
+                      onChange={(e) => setDateEnd(e.target.value)}
+                      type="date"
+                    />
+                  </div>
                 </div>
-                {/* <canvas height={200} width={200}> */}
-                {record ?
-                    <React.Fragment>
-                        <div className="lg:md:flex animasi-topToBottom p-2">
-                            <div className="lg:md:flex justify-start p-2 gap-2">
-                                <div className="gap-2 items-center w-full lg:md:mb-0 mb-2">
-                                    <label className='text-sm text-black' htmlFor="">Dari Tanggal</label>
-                                    <input className=' p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]' value={dateStart} onChange={(e) => setDateStart(e.target.value)} type="date" />
-                                </div>
-                                <div className="gap-2 items-center w-full">
-                                    <label className='text-sm text-black' htmlFor="">Hingga Tanggal</label>
-                                    <input className=' p-2 shadow-md rounded-lg w-full bg-white text-[#00bb9b]' value={dateEnd} onChange={(e) => setDateEnd(e.target.value)} type="date" />
-                                </div>
-                            </div>
-                            <div className="flex lg:w-auto h-full w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2">
-                                <div className="flex gap-2 lg:md:m-0 h-full md:sm:pb-2">
-                                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">
-                                        Total : {record.record}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="lg:grid lg:grid-cols-7 h-full">
-                            <div className='lg:col-span-3 h-full w-full flex justify-center p-2'>
-                                <div className="lg:hidden block w-full">
-                                    <Bar
-                                        // options={options2}
-                                        options={options2}
-                                        data={data}
-                                        // width={auto}
-                                        height={400}
-                                    />
-                                </div>
-                                <div className="lg:block hidden w-full">
-                                    <Bar
-                                        options={options}
-                                        data={data}
-                                        // width={400}
-                                        height={220}
-                                    />
-                                </div>
-                            </div>
-                            <div className='lg:col-span-4 h-full overflow-hidden '>
-                                <div className="flex scroll-smooth overflow-x-scroll" ref={scrollableRef}>
-                                    <div className="flex gap-3 h-full p-4">
-                                        {record && record.data &&
-                                            record.data.map((item, index) => {
-                                                return (
-                                                    <React.Fragment key={index}>
-                                                        <Bangsal title={item.kd_bangsal} index={item.pasien} data={item.data} />
-                                                    </React.Fragment>
-                                                )
-                                            })}
-                                    </div>
-                                </div>
-                                <div className="flex gap-2  mt-3 p-2">
-                                    <button onClick={() => scrollHorizontal(-500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-xl'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                                        </svg>
-                                    </button>
-                                    <button onClick={() => scrollHorizontal(500)} className='duration-75 active:scale-95 shadow-md p-3 rounded-xl'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </React.Fragment>
-
-                    :
-                    <div className="min-h-[40vh] w-full flex justify-center items-center">
-                        <CircularProgress color="success" aria-label="Loading..." />
+                <div className="flex lg:w-auto h-full w-full gap-2 justify-start items-center text-[#00bb9b] overflow-hidden overflow-x-scroll lg:md:pt-2">
+                  <div className="flex gap-2 lg:md:m-0 h-full md:sm:pb-2">
+                    <div className="p-3 w-32 shadow-md rounded-lg h-full flex justify-center items-center bg-[#ffee59] text-black">
+                      Total : {total}
                     </div>
-
-                }
-
-            </div >
-        </React.Fragment >
-    )
+                  </div>
+                </div>
+              </div>
+              <div className="lg:grid lg:grid-cols-7 h-full">
+                <div className="lg:col-span-3 h-full w-full flex justify-center p-2">
+                  <div className="lg:hidden block w-full">
+                    <Bar
+                      // options={options2}
+                      options={options2}
+                      data={data}
+                      // width={auto}
+                      height={400}
+                    />
+                  </div>
+                  <div className="lg:block hidden w-full">
+                    <Bar
+                      options={options}
+                      data={data}
+                      // width={400}
+                      height={220}
+                    />
+                  </div>
+                </div>
+                <div className="lg:col-span-4 h-full overflow-hidden ">
+                  <div
+                    className="flex scroll-smooth overflow-x-scroll"
+                    ref={scrollableRef}
+                  >
+                    <div className="flex gap-3 h-full p-4">
+                      {record &&
+                        record.data &&
+                        record.data.map((item, index) => {
+                          return (
+                            <React.Fragment key={index}>
+                              <Bangsal
+                                title={item.kd_bangsal}
+                                index={item.pasien}
+                                data={item.data}
+                              />
+                            </React.Fragment>
+                          );
+                        })}
+                    </div>
+                  </div>
+                  <div className="flex gap-2  mt-3 p-2">
+                    <button
+                      onClick={() => scrollHorizontal(-500)}
+                      className="duration-75 active:scale-95 shadow-md p-3 rounded-xl"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15.75 19.5L8.25 12l7.5-7.5"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => scrollHorizontal(500)}
+                      className="duration-75 active:scale-95 shadow-md p-3 rounded-xl"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </React.Fragment>
+          ) : (
+            <div className="min-h-[40vh] w-full flex justify-center items-center">
+              <CircularProgress color="success" aria-label="Loading..." />
+            </div>
+          )}
+        </div>
+      </React.Fragment>
+    );
 }
 
 export default ChartPasienPulang
